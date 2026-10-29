@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Step-Power Generator route</title>
+<style>
+:root{color-scheme:light;font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:#222;background:#f7f7f4}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;box-sizing:border-box}
+main{max-width:440px;background:white;border:1px solid #ddd;border-radius:14px;padding:24px;box-shadow:0 10px 35px #0000000c}
+h1{font-size:20px;margin:0 0 8px}p{color:#555}a{color:#145b49}
+</style>
+</head>
+<body>
+<main id="message"><h1>Opening generator trial…</h1><p>The selected route is loading.</p></main>
+<script>
+(function(){
+  const path = window.location.pathname;
+  const match = path.match(/^(.*\/)(10|20|30|40)\/?$/);
+  if (match) {
+    const base = match[1];
+    const tooth = match[2];
+    const target = new URL(base + tooth + '.html?__route=' + tooth + '&__base=' + encodeURIComponent(base), window.location.origin);
+    if (target.origin === window.location.origin) {
+      window.location.replace(target.href);
+      return;
+    }
+  }
+  const main = document.getElementById('message');
+  const segments = path.split('/').filter(Boolean);
+  const knownRoute = segments.length ? segments[segments.length - 1] : '';
+  if (['10','20','30','40'].includes(knownRoute)) {
+    main.innerHTML = '<h1>Opening generator trial…</h1><p>Please wait for the selected model to load.</p>';
+  } else {
+    let base = '/';
+    const index = path.lastIndexOf('/');
+    if (index > 0) base = path.slice(0, index + 1);
+    main.innerHTML = '<h1>Page not found</h1><p>Use one of the four generator trial routes.</p><p><a href="' + base + '">Open the main 20T model</a></p><p><a href="' + base + '10/">10T</a> · <a href="' + base + '20/">20T</a> · <a href="' + base + '30/">30T</a> · <a href="' + base + '40/">40T</a></p>';
+  }
+})();
+</script>
+</body>
+</html>
