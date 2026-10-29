@@ -1,13 +1,21 @@
-STEP-POWER PINION EXPERIMENTS — VALIDATION NOTES
+STEP-POWER GENERATOR REVISION — TEST REPORT
 
-Passed automated checks:
-- HTML parsed for index.html and all four trial pages.
-- Each page exposes the four 10T/20T/30T/40T selector links.
-- Each page's TOOTH_COUNT, generated pinion geometry and AR asset reference agree.
-- Each page includes the fair-test method and engineering limitation note.
-- Inline JavaScript passes Node syntax checking, including the 404 route handler.
-- All four GLB files have valid GLB headers and contain the matching named trial pinion mesh.
-- The ideal ratio calculations match the documented 20 mm stroke and 25:1 secondary ratio.
+Passed static checks:
+- All five HTML entry points contain the compact experiment selector, motion controls and voltage monitor.
+- Page-specific tooth count is 10, 20, 30, 40; index.html remains 20T.
+- Each page generates its pinion geometry from TOOTH_COUNT and references the matching AR GLB name.
+- The live voltage estimate reads the speed derived from the simulated output shaft and uses an editable reference voltage of 6 V at 6000 rpm.
+- The floor and subtle grid are visible in normal 3D mode, positioned directly beneath the fixed base board (board underside y=0, floor y=-0.25), and hidden for AR placement.
+- Run/Pause, Single cycle and speed selection are wired to module-scope simulation state.
+- Rack movement drives the input pinion angle. The two 90T/18T stages animate at 5:1 each; the shaft meshes and motor rotor/coupling key follow the gear train at the correct shaft ratios. The output coasts on spring return rather than being actively reversed.
+- All internal module scripts pass Node's JavaScript syntax check.
+- All matching GLB files are present and each HTML entry has its correct tooth count.
 
-Not performed here:
-- A live public GitHub Pages render, mobile WebXR/Quick Look placement or physical gear-mesh test. Test those on the deployed HTTPS site and only validate printed/loaded mechanisms under appropriate engineering supervision.
+Attempted live browser check:
+- Headless Chromium did not finish starting in this environment. A live WebGL screenshot/browser interaction could not be confirmed here; the CDN imports and WebGL should be checked on the deployed HTTPS GitHub Pages site.
+
+Important limitations:
+- Voltage is an illustrative model estimate, not a sensor reading. Default assumption is a linear 6 V open-circuit output at 6000 rpm. Edit the reference voltage to fit the selected motor, and validate against measured no-load voltage.
+- Real loaded voltage, current, torque and power are not validated.
+- Physical tooth meshing or print-readiness of the concept 10T/20T/30T/40T pinions is not validated. The supplied physical build uses an 18T pinion.
+- Live WebXR / mobile Quick Look and physical hardware must be tested separately.

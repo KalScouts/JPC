@@ -32,40 +32,25 @@ canvas.dragging{cursor:grabbing}
 .ar-mode .ar-entry{top:10px;right:10px}
 .ar-mode .ar-message{bottom:14px;max-height:25vh;overflow:hidden}
 
-.experiment-panel{position:fixed;z-index:8;top:12px;left:12px;width:min(344px,calc(100vw - 72px));max-height:calc(100svh - 24px);overflow:auto;overscroll-behavior:contain;padding:16px;border:1px solid rgba(204,215,207,.92);border-radius:17px;background:rgba(255,255,255,.96);box-shadow:0 14px 42px rgba(24,43,30,.14);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#202722;scrollbar-width:thin;scrollbar-color:#ccd7ce transparent}
-.experiment-panel *{box-sizing:border-box}
-.exp-kicker{display:flex;align-items:center;gap:7px;margin:0 0 9px;color:#66766b;font-size:9px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
-.exp-kicker-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#22a45c;box-shadow:0 0 0 3px rgba(34,164,92,.12)}
-.experiment-panel h1{margin:0;font-size:20px;line-height:1.12;letter-spacing:-.035em;font-weight:800;color:#202722}
-.exp-intro{margin:8px 0 13px;color:#667168;font-size:11px;line-height:1.5}
-.exp-current{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 12px;margin-bottom:10px;border:1px solid #dfe8e0;border-radius:12px;background:#f7faf7}
-.exp-current-label{display:block;color:#6e7b70;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
-.exp-current strong{display:block;margin-top:2px;font-size:20px;line-height:1.15;letter-spacing:-.025em;color:#214d34}
-.exp-current small{display:block;margin-top:4px;color:#6e7b70;font-size:10px}
-.exp-status{flex:0 0 auto;padding:5px 7px;border:1px solid #dce7de;border-radius:999px;background:#fff;color:#55735e;font-size:9px;font-weight:750;white-space:nowrap}
-.trial-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
-.trial-option{position:relative;display:flex;min-width:0;flex-direction:column;gap:3px;padding:10px;border:1px solid #dfe5e0;border-radius:12px;background:#fff;color:#202722;text-decoration:none;transition:border-color .15s,background .15s,transform .15s;outline-offset:3px}
-.trial-option:hover{border-color:#8fbaa0;background:#f7fbf8;transform:translateY(-1px)}
-.trial-option:focus-visible{outline:2px solid #248c50}
-.trial-option.is-current{border-color:#26884d;background:#edf8f0;box-shadow:inset 0 0 0 1px rgba(38,136,77,.08)}
-.trial-option-top{display:flex;align-items:center;justify-content:space-between;gap:5px;margin-bottom:3px}
-.trial-index{color:#839087;font-size:8px;font-weight:800;letter-spacing:.09em}
-.trial-mark{color:#4e6756;font-size:10px;font-weight:850}
-.trial-option strong{font-size:13px;line-height:1.2}
-.trial-option small{color:#6d786f;font-size:9px;line-height:1.35}
-.trial-option em{margin-top:4px;color:#2e6844;font-size:9px;font-style:normal;font-weight:750;line-height:1.3}
-.trial-state{display:none;align-self:flex-start;margin-top:3px;padding:3px 5px;border-radius:5px;background:#d9efdf;color:#245f39;font-size:8px;font-weight:850;letter-spacing:.04em}
-.trial-option.is-current .trial-state{display:inline-block}
-.exp-guide{margin-top:11px;padding:10px 11px;border-left:3px solid #70b985;border-radius:0 9px 9px 0;background:#f7faf7}
-.exp-guide strong{display:block;font-size:11px;color:#293a2e}
-.exp-guide p{margin:4px 0 0;color:#5e6c62;font-size:10px;line-height:1.5}
-.exp-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}
-.exp-stat{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 9px;border:1px solid #e3e8e4;border-radius:9px;background:#fff}
-.exp-stat span{color:#758078;font-size:9px}
-.exp-stat strong{color:#273b2d;font-size:11px;white-space:nowrap}
-.exp-method{margin-top:10px;border-top:1px solid #e5eae5;padding-top:9px}.exp-method summary{cursor:pointer;color:#344b3a;font-size:10px;font-weight:800;outline-offset:3px}.exp-method summary:focus-visible{outline:2px solid #248c50}.exp-method ol{margin:7px 0 0;padding-left:18px;color:#637067;font-size:9px;line-height:1.5}.exp-method li+li{margin-top:4px}.exp-safety{margin:10px 1px 0;color:#7a847d;font-size:9px;line-height:1.45}
-.ar-mode .experiment-panel{display:none}
-@media(max-width:540px){.experiment-panel{top:54px;left:8px;width:calc(100vw - 16px);max-height:42svh;padding:12px;border-radius:14px}.experiment-panel h1{font-size:17px}.exp-intro{margin:6px 0 9px;font-size:10px}.exp-current{padding:8px 9px;margin-bottom:8px}.exp-current strong{font-size:18px}.trial-grid{gap:6px}.trial-option{padding:8px;border-radius:10px}.trial-option strong{font-size:12px}.trial-option em{font-size:8.5px}.exp-guide{margin-top:8px;padding:8px 9px}.exp-stats{margin-top:8px}.exp-safety{font-size:8px}}
+
+/* Compact overlay controls keep the full mechanism visible; there is no blocking sidebar. */
+.trial-bar{position:fixed;z-index:8;top:12px;left:12px;max-width:min(360px,calc(100vw - 96px));padding:10px 12px;border:1px solid rgba(205,216,208,.92);border-radius:14px;background:rgba(255,255,255,.94);box-shadow:0 5px 22px rgba(28,44,33,.10);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#202722}
+.trial-brand{display:flex;align-items:center;gap:6px;font-size:9px;font-weight:850;letter-spacing:.12em;color:#33473a;white-space:nowrap}
+.brand-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#24a45a;box-shadow:0 0 0 3px rgba(36,164,90,.12)}
+.brand-separator{color:#bdc7be;margin:0 1px}.brand-sub{color:#738076;font-weight:750}
+.trial-tabs{display:flex;gap:5px;margin-top:8px}
+.trial-tabs a{display:grid;place-items:center;min-width:42px;padding:6px 9px;border:1px solid #dfe5e0;border-radius:8px;background:#fff;color:#344138;text-decoration:none;font-size:11px;font-weight:850;line-height:1;transition:background .12s,border-color .12s}
+.trial-tabs a:hover{border-color:#89b99a;background:#f5fbf6}.trial-tabs a:focus-visible{outline:2px solid #248c50;outline-offset:2px}.trial-tabs a.is-current{background:#e6f5e9;border-color:#2f9253;color:#205d35}
+.trial-current{display:flex;align-items:baseline;gap:8px;margin-top:8px}.trial-current strong{font-size:13px;letter-spacing:-.02em;color:#263b2d}.trial-current span{font-size:10px;color:#718076}
+.motion-controls{position:fixed;z-index:8;left:12px;bottom:46px;display:flex;align-items:center;flex-wrap:wrap;gap:6px;max-width:calc(100vw - 24px);padding:8px;border:1px solid rgba(205,216,208,.92);border-radius:12px;background:rgba(255,255,255,.94);box-shadow:0 4px 18px rgba(28,44,33,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.motion-controls button{appearance:none;border:1px solid #d4dfd6;background:#fff;color:#28372d;border-radius:8px;padding:7px 10px;font:700 10px/1.1 system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer;min-height:30px}.motion-controls button:first-child{background:#e8f6eb;border-color:#b9dfc3;color:#235d36}.motion-controls button:hover{border-color:#8fbaa0}.motion-controls button:focus-visible,.motion-controls select:focus-visible,.reference-setting input:focus-visible{outline:2px solid #248c50;outline-offset:2px}
+.speed-control{display:flex;align-items:center;gap:5px;color:#69766c;font-size:10px;font-weight:700}.speed-control select{max-width:90px;padding:5px;border:1px solid #dce4dd;border-radius:7px;background:#fff;color:#2d3a30;font:600 10px system-ui}.motion-state{padding:5px 7px;border-radius:6px;background:#f0f5f1;color:#58705e;font-size:8px;font-weight:850;letter-spacing:.08em}
+.voltage-monitor{position:fixed;z-index:8;top:12px;right:64px;width:196px;padding:11px 12px;border:1px solid rgba(35,70,46,.32);border-radius:13px;background:linear-gradient(145deg,rgba(22,39,29,.97),rgba(31,52,39,.96));box-shadow:0 7px 24px rgba(16,34,23,.22);color:#e9f5eb;font-variant-numeric:tabular-nums;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.monitor-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#a3c4aa;font-size:8px;font-weight:850;letter-spacing:.12em}.monitor-led{display:inline-block;width:6px;height:6px;border-radius:50%;background:#77957e;box-shadow:0 0 0 3px rgba(119,149,126,.16)}.monitor-led.active{background:#6df39a;box-shadow:0 0 0 3px rgba(109,243,154,.16),0 0 10px #6df39a}
+.voltage-reading{display:flex;align-items:baseline;gap:5px;margin-top:4px;color:#86f6a5}.voltage-reading strong{font:650 31px/1.12 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:-.06em}.voltage-reading span{font-size:15px;font-weight:800}.monitor-subtitle{color:#8fa897;font-size:7px;font-weight:800;letter-spacing:.12em;margin:2px 0 8px}.monitor-line{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 0;border-top:1px solid rgba(211,233,216,.12);font-size:9px}.monitor-line span{color:#b0c4b4}.monitor-line strong{color:#f0f8f1;font-size:9px;font-weight:750;text-align:right}.reference-setting{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:6px;padding-top:6px;border-top:1px solid rgba(211,233,216,.12);color:#b0c4b4;font-size:8px}.reference-setting>span{display:flex;align-items:center;gap:3px;white-space:nowrap}.reference-setting input{width:39px;padding:3px 2px;border:1px solid #577361;border-radius:5px;background:#182c20;color:#e6f8ea;font:700 9px ui-monospace,SFMono-Regular,Consolas,monospace;text-align:center}.monitor-note{margin:7px 0 0;color:#8ea796;font-size:8px;line-height:1.4}
+.ar-mode .trial-bar,.ar-mode .motion-controls,.ar-mode .voltage-monitor{display:none}
+@media(max-width:640px){.trial-bar{top:8px;left:8px;max-width:calc(100vw - 178px);padding:8px}.trial-brand{font-size:8px;gap:4px}.trial-tabs{gap:4px;margin-top:6px}.trial-tabs a{min-width:32px;padding:6px 6px;font-size:10px}.trial-current{gap:5px;margin-top:6px;flex-wrap:wrap}.trial-current strong{font-size:11px}.trial-current span{font-size:9px}.voltage-monitor{top:8px;right:8px;width:156px;padding:9px}.voltage-reading strong{font-size:26px}.monitor-line{font-size:8px}.monitor-line strong{font-size:8px}.reference-setting{font-size:7px}.monitor-note{font-size:7px}.motion-controls{left:8px;bottom:38px;max-width:calc(100vw - 16px);gap:4px;padding:6px}.motion-controls button{padding:6px 8px;font-size:9px;min-height:28px}.speed-control{font-size:9px}.speed-control select{max-width:78px;font-size:9px}.motion-state{font-size:7px}}
+@media(max-width:390px){.trial-bar{max-width:calc(100vw - 154px)}.brand-sub,.brand-separator{display:none}.trial-tabs a{min-width:28px;padding:6px 4px}.trial-current span{max-width:100%;font-size:8px}.voltage-monitor{width:140px}.monitor-note{line-height:1.25}.motion-controls{bottom:34px}.speed-control{gap:3px}}
 
 @media(max-width:540px){.credit-pill{left:8px;bottom:8px;padding:6px 8px;font-size:9px}.ar-entry{top:8px;right:8px;width:38px;height:38px;min-height:38px}.ar-message{left:8px;right:8px;bottom:52px;width:auto;max-width:none;font-size:10px;border-radius:12px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
@@ -95,63 +80,31 @@ canvas.dragging{cursor:grabbing}
 <div class="credit-pill" aria-label="Credit">Built by Hunter Miller from JPC</div>
 <button id="arBtn" class="ar-entry" type="button" aria-label="View the generator in augmented reality" title="View in AR"><span class="ar-glyph" aria-hidden="true">AR</span></button>
 <div id="arMessage" class="ar-message" role="status" aria-live="polite" hidden><span id="arMessageText"></span></div>
-<aside id="experimentPanel" class="experiment-panel" data-current-teeth="40" aria-labelledby="experimentTitle">
-  <div class="exp-kicker"><span class="exp-kicker-dot" aria-hidden="true"></span> STEP-POWER · GEAR TEST</div>
-  <h1 id="experimentTitle">Pinion tooth-count experiment</h1>
-  <p class="exp-intro">Compare four rack-drive pinions. Select a test to load its matching 3D model. Drag to rotate; scroll or pinch to zoom.</p>
-  <div class="exp-current" aria-live="polite">
-    <div><span class="exp-current-label">This experiment</span><strong id="selectedTrial">40 teeth</strong><small id="selectedDiameter">40 mm nominal pitch diameter</small></div>
-    <span class="exp-status">Concept model</span>
+<div id="trialBar" class="trial-bar" aria-label="Step-Power gear experiment selector">
+  <div class="trial-brand"><span class="brand-dot" aria-hidden="true"></span><span>STEP-POWER</span><span class="brand-separator">/</span><span class="brand-sub">GEAR TEST</span></div>
+  <div class="trial-tabs" role="group" aria-label="Choose pinion tooth count">
+    <a href="10/" data-teeth="10" aria-label="Open 10 tooth test">10T</a>
+    <a href="20/" data-teeth="20" aria-label="Open 20 tooth test">20T</a>
+    <a href="30/" data-teeth="30" aria-label="Open 30 tooth test">30T</a>
+    <a href="40/" data-teeth="40" aria-label="Open 40 tooth test">40T</a>
   </div>
-  <nav class="trial-grid" aria-label="Choose a pinion tooth-count experiment">
-    <a class="trial-option" href="10/" data-teeth="10" aria-label="Open the 10-tooth pinion experiment">
-      <span class="trial-option-top"><span class="trial-index">TEST 01</span><span class="trial-mark">10T</span></span>
-      <strong>10 teeth</strong><small>10 mm pitch diameter</small><em data-turns>15.92 motor turns / 20 mm</em><span class="trial-state">CURRENT TEST</span>
-    </a>
-    <a class="trial-option" href="20/" data-teeth="20" aria-label="Open the 20-tooth pinion experiment">
-      <span class="trial-option-top"><span class="trial-index">TEST 02</span><span class="trial-mark">20T</span></span>
-      <strong>20 teeth</strong><small>20 mm pitch diameter</small><em data-turns>7.96 motor turns / 20 mm</em><span class="trial-state">CURRENT TEST</span>
-    </a>
-    <a class="trial-option" href="30/" data-teeth="30" aria-label="Open the 30-tooth pinion experiment">
-      <span class="trial-option-top"><span class="trial-index">TEST 03</span><span class="trial-mark">30T</span></span>
-      <strong>30 teeth</strong><small>30 mm pitch diameter</small><em data-turns>5.31 motor turns / 20 mm</em><span class="trial-state">CURRENT TEST</span>
-    </a>
-    <a class="trial-option" href="40/" data-teeth="40" aria-label="Open the 40-tooth pinion experiment">
-      <span class="trial-option-top"><span class="trial-index">TEST 04</span><span class="trial-mark">40T</span></span>
-      <strong>40 teeth</strong><small>40 mm pitch diameter</small><em data-turns>3.98 motor turns / 20 mm</em><span class="trial-state">CURRENT TEST</span>
-    </a>
-  </nav>
-  <div class="exp-guide"><strong>What changes?</strong><p id="experimentExplanation">Only the rack-drive pinion changes. More teeth means a larger pitch diameter and fewer ideal motor turns for the same 20 mm rack stroke.</p></div>
-  <div class="exp-stats" aria-label="Fixed test conditions"><div class="exp-stat"><span>Rack travel</span><strong>20 mm</strong></div><div class="exp-stat"><span>Fixed gearbox</span><strong>25:1</strong></div></div>
-  <details class="exp-method"><summary>How to run a fair test</summary><ol><li>Use the same 20 mm rack stroke for each pinion.</li><li>Keep the motor, electrical load, stroke speed and rest time the same.</li><li>Repeat each setup five times. Record motor turns and measured voltage/current.</li><li>Compare average readings. Turns alone do not tell you the real electrical power.</li></ol></details>
-  <p class="exp-safety">These are ratio and visual trials, not measured electrical-power tests or print-ready gear designs. The supplied physical setup uses an 18-tooth pinion. Check tooth mesh, clearance, strength and shaft fit before printing or driving any alternative.</p>
+  <div class="trial-current"><strong id="selectedTrial">30 teeth</strong><span id="selectedDiameter">30 mm pitch diameter</span></div>
+</div>
+<div id="motionControls" class="motion-controls" role="group" aria-label="Operate the simulated mechanism">
+  <button id="runPauseButton" type="button" aria-pressed="false">Pause motion</button>
+  <button id="singleCycleButton" type="button">Single cycle</button>
+  <label class="speed-control" for="cycleSpeed">Speed <select id="cycleSpeed"><option value="0.25">Slow</option><option value="0.45" selected>Normal</option><option value="0.7">Fast</option><option value="1">Very fast</option></select></label>
+  <span id="motionState" class="motion-state" aria-live="polite">RUNNING</span>
+</div>
+<aside id="voltageMonitor" class="voltage-monitor" aria-label="Estimated generator voltage">
+  <div class="monitor-heading"><span>GENERATOR OUTPUT</span><span id="monitorLed" class="monitor-led" aria-hidden="true"></span></div>
+  <div class="voltage-reading"><strong id="voltageReadout">0.00</strong><span>V</span></div>
+  <div class="monitor-subtitle">ESTIMATED OPEN-CIRCUIT</div>
+  <div class="monitor-line"><span>Generator speed</span><strong id="generatorRpm">0 rpm</strong></div>
+  <div class="monitor-line"><span>Drive state</span><strong id="phaseReadout">READY</strong></div>
+  <label class="reference-setting" for="referenceVoltage"><span>Reference rating</span><span><input id="referenceVoltage" type="number" min="1" max="24" step="0.5" value="6" inputmode="decimal" aria-label="Assumed generator voltage at 6000 RPM"> V at 6000 rpm</span></label>
+  <p class="monitor-note">Model estimate only. Actual voltage depends on the motor, speed, load and losses.</p>
 </aside>
-<script>
-(function(){
-  const panel=document.getElementById('experimentPanel');
-  if(!panel)return;
-  const teeth=Number(panel.dataset.currentTeeth)||20;
-  const diameter=teeth;
-  const idealTurns=(20/(Math.PI*diameter))*25;
-  const selected=document.getElementById('selectedTrial');
-  const selectedDiameter=document.getElementById('selectedDiameter');
-  const explanation=document.getElementById('experimentExplanation');
-  if(selected)selected.textContent=teeth+' teeth';
-  if(selectedDiameter)selectedDiameter.textContent=diameter+' mm nominal pitch diameter';
-  if(explanation){
-    const comparison=teeth<20?'This smaller pinion makes more ideal turns for the same rack travel.':teeth>20?'This larger pinion makes fewer ideal turns for the same rack travel.':'Use this as the middle reference trial.';
-    explanation.textContent=comparison+' With a 20 mm rack stroke and fixed 25:1 secondary stages, the estimate is '+idealTurns.toFixed(2)+' motor turns. Real output depends on friction, motor load and electrical losses.';
-  }
-  panel.querySelectorAll('[data-teeth]').forEach(function(link){
-    const count=Number(link.dataset.teeth);
-    const turns=(20/(Math.PI*count))*25;
-    const turnLabel=link.querySelector('[data-turns]');
-    if(turnLabel)turnLabel.textContent=turns.toFixed(2)+' motor turns / 20 mm';
-    if(count===teeth){link.classList.add('is-current');link.setAttribute('aria-current','page');}
-    else{link.classList.remove('is-current');link.removeAttribute('aria-current');}
-  });
-})();
-</script>
 <model-viewer id="arFallback" class="native-ar-host" src="step-power-generator-ar-40.glb" alt="Step-Power Generator Rev J physical-size assembly, 40-tooth pinion trial" ar ar-modes="scene-viewer quick-look" ar-scale="fixed" camera-controls disable-zoom loading="eager" shadow-intensity="0.7" exposure="1.15"></model-viewer>
 <script type="module">
 import * as THREE from 'three';
@@ -182,7 +135,7 @@ const mat=(c,r=.62,m=0,more={})=>new THREE.MeshStandardMaterial({color:c,roughne
 const woodMap=makeWoodTexture(false),woodBoardMap=makeWoodTexture(true);
 const wood=mat(0xffffff,.82,.01,{map:woodBoardMap}),woodSide=mat(0xd6b78f,.85,0,{map:woodMap}),woodLight=mat(0xe6c596,.82,0,{map:woodMap}),pedalWood=mat(0xffffff,.82,0,{map:woodBoardMap}),rubber=mat(0x303432,.86,0),steel=mat(0x737f86,.28,.78),brightSteel=mat(0xd9e0e3,.2,.82),darkSteel=mat(0x58636a,.34,.68),printed=mat(0x101214,.59,.015),printedEdge=mat(0x242729,.47,.02),plastic=printed,plasticDark=printedEdge,orange=printed,brass=printedEdge,copper=printed,black=mat(0x151718,.74,.01),boardMat=mat(0x151718,.58,.02),wireRed=mat(0xc83d3d,.36,.02),wireBlack=mat(0x24282b,.42,.02);
 const clearMat=mat(0xffffff,.18,.02,{transparent:true,opacity:.13,depthWrite:false,side:THREE.DoubleSide});
-const floor=new THREE.Mesh(new THREE.PlaneGeometry(2200,2200),mat(0xf5f6f5,.94,0));floor.rotation.x=-Math.PI/2;floor.position.y=-36;floor.receiveShadow=true;scene.add(floor);floor.visible=false;
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(2200,2200),mat(0xf5f6f5,.96,0));floor.rotation.x=-Math.PI/2;floor.position.y=-0.25;floor.receiveShadow=true;scene.add(floor);floor.visible=true;const floorGrid=new THREE.GridHelper(1200,24,0xcbd7ce,0xe0e7e1);floorGrid.position.y=-0.12;for(const gridMaterial of (Array.isArray(floorGrid.material)?floorGrid.material:[floorGrid.material])){gridMaterial.transparent=true;gridMaterial.opacity=.38;gridMaterial.depthWrite=false;}scene.add(floorGrid);floorGrid.visible=true;
 const reticleGeo=new THREE.RingGeometry(.065,.085,40);reticleGeo.rotateX(-Math.PI/2);const reticle=new THREE.Mesh(reticleGeo,new THREE.MeshBasicMaterial({color:0x27c875,side:THREE.DoubleSide,depthTest:false,transparent:true,opacity:.95}));reticle.matrixAutoUpdate=true;reticle.visible=false;scene.add(reticle);
 const parts=new Map(),selectables=[];
 function makePart(id,name,desc,specs=[],extra={}){const g=new THREE.Group();g.userData={partId:id,name,desc,specs,coords:extra.coords||'—',motion:extra.motion||'Fixed',confidence:extra.confidence||'Visual layout'};modelRoot.add(g);parts.set(id,g);return g;}
@@ -335,11 +288,13 @@ for(const x of [55,89])for(const z of [-149,-119]){cylinder(motorBlockPart,2.25,
 const motorCradleMesh=addMesh(motorMount,realPartGeo.motorCradle,plasticDark);motorCradleMesh.position.set(72,64,-130.5);
 const motorBody=cylinder(motorMount,13.33,57,72,63,-130.5,steel,'z',48);cylinder(motorMount,13.1,2,72,63,-159.2,brightSteel,'z',40);cylinder(motorMount,12.5,2,72,63,-101.8,brightSteel,'z',40);
 for(let i=0;i<12;i++){const a=i*Math.PI/6;const vent=box(motorMount,.9,5,34,72+12.4*Math.cos(a),63+12.4*Math.sin(a),-130.5,darkSteel,{cast:false});vent.rotation.z=a;}
-cylinder(motorMount,1.15,13,72,63,-95.5,brightSteel,'z',20);cylinder(motorMount,4.8,7,72,63,-97,plasticDark,'z',22);box(motorMount,6.5,1.4,1.4,72,63,-92.5,brightSteel,{cast:false});
+// The output shaft, coupling hub and visible key are mounted on one rotor group so their rotation is visible and stays aligned with the final gear.
+const motorRotorGroup=new THREE.Group();motorMount.add(motorRotorGroup);motorRotorGroup.position.set(72,63,-97);
+cylinder(motorRotorGroup,1.15,13,0,0,1.5,brightSteel,'z',20);cylinder(motorRotorGroup,4.8,7,0,0,0,plasticDark,'z',22);box(motorRotorGroup,6.5,1.4,1.4,0,0,4.5,brightSteel,{cast:false});
 for(const x of [63,81]){box(motorMount,5,3,7,x,81,-118,plasticDark);}
 
 // Simple rectifier / storage concept board and LED, kept outside the moving pedal footprint.
-const electronics=makePart('electronics','LED / rectifier demonstration board','A visual electronics placeholder shows where a rectifier, controlled storage stage and LED could sit. The emitter is animated from mechanism motion only; no generated voltage or current is calculated.', ['Illustrative board ≈ 42 × 28 mm','LED glow follows simulated shaft motion','Real rectifier / storage / resistor must be designed separately'],{coords:'Outside pedal at X ≈ +108, Z ≈ −20',motion:'Indicator only',confidence:'Not an electrical circuit simulation'});
+const electronics=makePart('electronics','LED / rectifier demonstration board','A visual electronics placeholder shows where a rectifier, controlled storage stage and LED could sit. The emitter follows simulated motion; the corner instrument shows an assumed open-circuit voltage estimate, not a measured electrical output.', ['Illustrative board ≈ 42 × 28 mm','LED glow follows simulated shaft motion','Real rectifier / storage / resistor must be designed separately'],{coords:'Outside pedal at X ≈ +108, Z ≈ −20',motion:'Indicator only',confidence:'Not an electrical circuit simulation'});
 const electronicsShelf=addMesh(electronics,realPartGeo.electronicsShelf,plasticDark);electronicsShelf.rotation.x=Math.PI/2;electronicsShelf.position.set(88,20.5,-20);box(electronics,30,.8,20,106,22.4,-20,boardMat,{cast:false});for(let i=0;i<5;i++)box(electronics,1,.5,16,94+i*6,22.6,-20,darkSteel,{cast:false});
 const ledMat=new THREE.MeshStandardMaterial({color:0x2f874a,emissive:0x39ff85,emissiveIntensity:.12,roughness:.2,metalness:0});
 const ledBulb=addMesh(electronics,new THREE.SphereGeometry(4,28,20),ledMat);ledBulb.position.set(102,28.3,-20);
@@ -405,9 +360,12 @@ function updateSimulation(dt){
     sp.mesh.scale.y=gap/81;
     sp.mesh.position.set(sp.x,springBottom+gap/2,sp.z);
   }
+  // Rack drives the input pinion directly; the two 5:1 meshes drive the final shaft at 25:1.
   inputPinion.rotation.z=-travel/PITCH_RADIUS;
   big1.rotation.z=driveAngle;small1.rotation.z=-driveAngle*5;
   big2.rotation.z=-driveAngle*5;small2.rotation.z=driveAngle*25;
+  shaftAMesh.rotation.z=driveAngle;shaftBMesh.rotation.z=-driveAngle*5;shaftCMesh.rotation.z=driveAngle*25;
+  motorRotorGroup.rotation.z=driveAngle*25;
   clutchGroup.rotation.z=driveAngle;clutchRotorGroup.rotation.z=inputPinion.rotation.z;
   const power=Math.max(0,Math.min(1,Math.abs(driveVelocity)*.12));
   ledEnergy=Math.max(0,Math.min(1,Math.max(ledEnergy,power*.52)));
@@ -418,6 +376,20 @@ function updateSimulation(dt){
   const turnsElement=$('motorTurns');if(turnsElement)turnsElement.textContent=(Math.abs(driveAngle)*25/(Math.PI*2)).toFixed(2)+' rev';
   const clutchElement=$('clutchText');if(clutchElement)clutchElement.textContent=clutchEngaged?'CLUTCH ENGAGED':'CLUTCH OVERRUN';
   const dot=$('statusDot');if(dot){dot.style.background=clutchEngaged?'#77c997':'#42c879';dot.style.boxShadow=clutchEngaged?'0 0 0 3px #77c99728':'0 0 0 3px #42c87920';}
+  // The 90T/18T stages give 25:1 speed increase. This is a model estimate only:
+  // actual voltage depends on the fitted DC motor's back-EMF constant and electrical load.
+  const generatorRPM=Math.abs(driveVelocity)*25*60/(2*Math.PI);
+  const refInput=$('referenceVoltage');
+  const referenceVolts=Math.max(1,Math.min(24,Number(refInput&&refInput.value)||6));
+  if(refInput&&Number(refInput.value)!==referenceVolts)refInput.value=String(referenceVolts);
+  const estimatedVolts=referenceVolts*(generatorRPM/6000);
+  const voltsEl=$('voltageReadout');if(voltsEl)voltsEl.textContent=estimatedVolts.toFixed(2);
+  const rpmEl=$('generatorRpm');if(rpmEl)rpmEl.textContent=Math.round(generatorRPM).toLocaleString()+' rpm';
+  const phaseText=travel>.2?(delta>0?'POWER STROKE':'COAST / RETURN'):'READY';
+  const phaseReadout=$('phaseReadout');if(phaseReadout)phaseReadout.textContent=phaseText;
+  const monitorLed=$('monitorLed');if(monitorLed)monitorLed.classList.toggle('active',estimatedVolts>.15);
+  const motionStateEl=$('motionState');if(motionStateEl)motionStateEl.textContent=mode==='auto'?'RUNNING':mode==='single'?'SINGLE CYCLE':'PAUSED';
+  const runButton=$('runPauseButton');if(runButton){runButton.textContent=mode==='auto'?'Pause motion':'Resume motion';runButton.setAttribute('aria-pressed',mode!=='auto'?'true':'false');}
 }
 let arActive=false,arSession=null,hitTestSource=null,arPlaced=false;
 let arMessageTimer=0;
@@ -457,7 +429,7 @@ function placeAtReticle(){
   showARMessage('Placed at approximately real size. Tap another detected point to reposition; tap AR to exit.');
 }
 function resetARScene(){
-  arActive=false;arSession=null;hitTestSource=null;arPlaced=false;reticle.visible=false;modelRoot.visible=true;modelRoot.position.set(0,0,0);modelRoot.rotation.set(0,0,0);modelRoot.scale.setScalar(1);floor.visible=false;scene.background=new THREE.Color(0xffffff);scene.fog=null;renderer.setClearColor(0xffffff,1);controls.enabled=true;document.body.classList.remove('ar-mode');
+  arActive=false;arSession=null;hitTestSource=null;arPlaced=false;reticle.visible=false;modelRoot.visible=true;modelRoot.position.set(0,0,0);modelRoot.rotation.set(0,0,0);modelRoot.scale.setScalar(1);floor.visible=true;floorGrid.visible=true;scene.background=new THREE.Color(0xffffff);scene.fog=null;renderer.setClearColor(0xffffff,1);controls.enabled=true;document.body.classList.remove('ar-mode');
   $('arBtn').setAttribute('aria-label','View the generator in augmented reality');$('arBtn').title='View in AR';hideARMessage();setView('iso');
 }
 async function startAR(){
@@ -473,7 +445,7 @@ async function startAR(){
     // Request the session immediately from the tap so browser user activation is not lost.
     renderer.xr.enabled=true;renderer.xr.setReferenceSpaceType('local');
     session=await navigator.xr.requestSession('immersive-ar',{requiredFeatures:['hit-test'],optionalFeatures:['dom-overlay'],domOverlay:{root:document.body}});
-    arSession=session;arActive=true;arPlaced=false;modelRoot.visible=false;modelRoot.position.set(0,0,0);modelRoot.rotation.set(0,0,0);modelRoot.scale.setScalar(.001);floor.visible=false;scene.background=null;scene.fog=null;renderer.setClearColor(0xffffff,0);controls.enabled=false;document.body.classList.add('ar-mode');
+    arSession=session;arActive=true;arPlaced=false;modelRoot.visible=false;modelRoot.position.set(0,0,0);modelRoot.rotation.set(0,0,0);modelRoot.scale.setScalar(.001);floor.visible=false;floorGrid.visible=false;scene.background=null;scene.fog=null;renderer.setClearColor(0xffffff,0);controls.enabled=false;document.body.classList.add('ar-mode');
     session.addEventListener('select',placeAtReticle);session.addEventListener('end',resetARScene,{once:true});await renderer.xr.setSession(session);
     const viewerSpace=await session.requestReferenceSpace('viewer');hitTestSource=await session.requestHitTestSource({space:viewerSpace});
     $('arBtn').setAttribute('aria-label','Exit augmented reality');$('arBtn').title='Exit AR';showARMessage('Move your phone slowly until the green ring appears, then tap to place the animated generator.');
@@ -487,8 +459,18 @@ async function startAR(){
 function tick(time,frame){const now=performance.now()/1000;const dt=Math.min(.04,Math.max(.001,now-lastTime));lastTime=now;updateSimulation(dt);if(arActive)updateHitTest(frame);if(controls.enabled)controls.update();renderer.render(scene,camera);} 
 
 $('arBtn').addEventListener('click',startAR);
+$('runPauseButton').addEventListener('click',()=>{
+  if(mode==='auto'||mode==='single'){mode='paused';setTarget(travel);}
+  else{mode='auto';}
+  synchronizeUI();
+});
+$('singleCycleButton').addEventListener('click',()=>{phase=0;mode='single';setTarget(0);cycleCount=0;synchronizeUI();});
+$('cycleSpeed').addEventListener('change',event=>{const v=Number(event.target.value);if(Number.isFinite(v))cycleRate=Math.max(.1,Math.min(1.5,v));});
+$('referenceVoltage').addEventListener('change',event=>{const v=Number(event.target.value);event.target.value=String(Number.isFinite(v)?Math.max(1,Math.min(24,v)):6);});
 window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();const fit=responsiveFit();if(appliedFit>0&&Math.abs(fit-appliedFit)>.01){camera.position.copy(controls.target).add(camera.position.clone().sub(controls.target).multiplyScalar(fit/appliedFit));appliedFit=fit;}renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.setSize(innerWidth,innerHeight);controls.update();});
 // Start at a clear isometric angle and run the first cycle.
+document.querySelectorAll('.trial-tabs [data-teeth]').forEach(a=>{if(Number(a.dataset.teeth)===40){a.classList.add('is-current');a.setAttribute('aria-current','page');}});
+$('selectedTrial').textContent='40 teeth';$('selectedDiameter').textContent='40 mm pitch diameter';
 setView('iso');mode='auto';phase=0;targetTravel=0;selectedPart=null;applySelection();if($('loading'))$('loading').style.opacity='0';setTimeout(()=>{const loading=$('loading');if(loading)loading.remove();},300);renderer.setAnimationLoop(tick);
 </script>
 
