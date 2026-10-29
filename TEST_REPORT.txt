@@ -1,0 +1,13 @@
+STEP-POWER PINION EXPERIMENTS — VALIDATION NOTES
+
+Passed automated checks:
+- HTML parsed for index.html and all four trial pages.
+- Each page exposes the four 10T/20T/30T/40T selector links.
+- Each page's TOOTH_COUNT, generated pinion geometry and AR asset reference agree.
+- Each page includes the fair-test method and engineering limitation note.
+- Inline JavaScript passes Node syntax checking, including the 404 route handler.
+- All four GLB files have valid GLB headers and contain the matching named trial pinion mesh.
+- The ideal ratio calculations match the documented 20 mm stroke and 25:1 secondary ratio.
+
+Not performed here:
+- A live public GitHub Pages render, mobile WebXR/Quick Look placement or physical gear-mesh test. Test those on the deployed HTTPS site and only validate printed/loaded mechanisms under appropriate engineering supervision.

@@ -1,48 +1,34 @@
-STEP-POWER GENERATOR — FLAT GITHUB PAGES DEPLOYMENT
-
-FILES ARE ALL IN ONE FOLDER
-There are no subfolders in this package. Extract this ZIP, then upload the CONTENTS directly into the publishing root of your GitHub repository. Do not upload the ZIP itself, and do not upload the outer extracted folder as one nested folder.
+STEP-POWER GENERATOR — TOOTH-COUNT EXPERIMENT PACKAGE
 
 FILES
-- index.html: root preview, opens the 20T trial
-- 404.html: clean-route handler for GitHub Pages
-- 10.html, 20.html, 30.html, 40.html: individual trial pages
-- step-power-generator-ar-10.glb, step-power-generator-ar-20.glb, step-power-generator-ar-30.glb, step-power-generator-ar-40.glb: the matching AR models
-- .nojekyll: keeps the static bundle unmodified by Jekyll
+Upload all contents of this folder directly to the GitHub Pages publishing root. Keep the four `.glb` files beside their matching HTML pages.
 
-CLEAN QR ROUTES
-After the contents are published, these clean URLs are handled without route folders:
-  https://YOUR-SITE/10/
-  https://YOUR-SITE/20/
-  https://YOUR-SITE/30/
-  https://YOUR-SITE/40/
+- index.html: 20-tooth reference experiment
+- 10.html, 20.html, 30.html, 40.html: individual pinion trials
+- 404.html: clean route handler for /10/, /20/, /30/, /40/
+- step-power-generator-ar-10.glb
+- step-power-generator-ar-20.glb
+- step-power-generator-ar-30.glb
+- step-power-generator-ar-40.glb: matching AR models
 
-For a project Pages site with a repository base, for example https://USERNAME.github.io/REPOSITORY/, the routes are:
-  https://USERNAME.github.io/REPOSITORY/10/
-  https://USERNAME.github.io/REPOSITORY/20/
-  https://USERNAME.github.io/REPOSITORY/30/
-  https://USERNAME.github.io/REPOSITORY/40/
-The route handler detects the repository base, redirects internally to the matching flat HTML file, and restores the clean route in the address bar. Refreshing a route is handled by 404.html again. The main / page opens 20T.
+WHAT IS CHANGED
+Each page uses the matching tooth count for the visible rack-drive pinion and its AR fallback. The experiment selector lets users change trial and see nominal pitch diameter plus an ideal motor-turn estimate for a 20 mm rack stroke. Other gearbox gears remain fixed.
 
-GITHUB PAGES SETUP
-1. Extract the ZIP on your computer.
-2. Open the extracted folder and select every file, including the four GLBs and .nojekyll.
-3. Upload those selected files directly to the publishing root of the repository. The repository root should show index.html and 404.html alongside 10.html/20.html/30.html/40.html and the four .glb files. No folder should contain these files.
-4. In GitHub, make sure Pages is enabled for the intended branch/folder and wait for the commit deployment to finish.
-5. Test /, /10/, /20/, /30/, and /40/ over HTTPS before generating QR codes.
+THEORETICAL COMPARISON
+10 teeth: 10 mm pitch diameter; 15.92 ideal motor turns per 20 mm stroke
+20 teeth: 20 mm pitch diameter; 7.96 ideal motor turns per 20 mm stroke
+30 teeth: 30 mm pitch diameter; 5.31 ideal motor turns per 20 mm stroke
+40 teeth: 40 mm pitch diameter; 3.98 ideal motor turns per 20 mm stroke
+Formula: 20 / (pi * pinion pitch diameter) * 25. The 25:1 secondary ratio is ideal. This is not a prediction of electrical power.
 
-GEAR COMPARISONS
-- /10/: 10 teeth, 10 mm pitch diameter, 15.92 ideal motor turns per 20 mm stroke
-- /20/: 20 teeth, 20 mm pitch diameter, 7.96 ideal motor turns per 20 mm stroke
-- /30/: 30 teeth, 30 mm pitch diameter, 5.31 ideal motor turns per 20 mm stroke
-- /40/: 40 teeth, 40 mm pitch diameter, 3.98 ideal motor turns per 20 mm stroke
-The estimates use 20 / (pi * pinion pitch diameter) rack turns, multiplied by the two 5:1 ideal secondary stages (25:1 total ideal speed ratio). They do not predict real electrical power.
+SUGGESTED FAIR EXPERIMENT
+Use the same 20 mm rack stroke for each pinion. Keep the motor, electrical load, stroke speed and rest time the same. Repeat five times per setup and record turns plus measured voltage/current. Compare averages; turns alone do not measure electrical power.
 
-IMPORTANT MECHANICAL LIMITATION
-The supplied Rev J print pack includes an 18T rack pinion, not validated 10T/20T/30T/40T replacement parts. The alternative profiles are conceptual visual/ratio trials, not validated involute gears or ready-to-print STLs. Tooth mesh, pinion/rack centre distance, shaft bore, bridge location, clearance and strength must be designed and hand-tested before changing the physical build. The original supplied 18T setup remains the baseline. Do not load the pedal with a person or motor-spin the printed clutch/shafts before the structure and mechanism have been properly checked.
+IMPORTANT SAFETY / MECHANICAL LIMITATION
+The supplied physical print setup uses an 18-tooth rack pinion. The other profiles are conceptual visual/ratio trials only; they are not validated involute gears or ready-to-print replacement parts. Validate tooth mesh, centre distance, shaft bore, alignment, clearance, strength, clutch and motor load before changing the real build. Do not load the pedal with a person or run printed components until the whole mechanism is properly checked.
 
-AR
-The AR button uses the relevant GLB stored at the same flat root. AR needs HTTPS and a compatible device/browser. Android live WebXR hit testing and iOS native Quick Look have different behaviour; native AR can show a static model rather than keep the browser animation running. Test each platform after deployment.
-
-TEST REVIEW
-Automated checks for this pack verify that all required files are in the root, all HTML asset references point to matching root GLBs, and clean paths route to the correct gear page. A live 3D/AR browser test still needs to be done on the published HTTPS site and target phone because this build environment cannot provide a reliable live WebGL device render.
+DEPLOY AND TEST
+1. Upload all files directly to the repository publishing root.
+2. Enable GitHub Pages.
+3. Confirm the main page and /10/, /20/, /30/, /40/ routes over HTTPS.
+4. Test AR on the target mobile device. A static source check cannot replace live WebXR/Quick Look verification.
